@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 00:12:49 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/23 15:22:36 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/23 16:54:21 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "hotrace.h"
 
-/* debug */
+/*
 static void test_hash(void)
 {
 	t_htable *table = new_table();
@@ -34,7 +34,8 @@ static void test_hash(void)
 	ft_putstr(print_buf);
 	del_table(table);
 }
-/* /debug */
+ */
+
 
 int				main(int ac, char **av)
 {
@@ -44,7 +45,6 @@ int				main(int ac, char **av)
 		ft_puterr(": too many arguments\n");
 		return (EXIT_FAILURE);
 	}
-	test_hash();				/* debug */
 	if (!parsing())
 	{
 		ft_puterr(*av);
