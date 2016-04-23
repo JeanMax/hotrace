@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:01:57 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/22 23:54:46 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/23 02:22:21 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ struct	s_list
 {
 	char	*key;
 	char	*value;
+	size_t	hash;
 	t_list	*next;
 };
 
@@ -53,6 +54,13 @@ struct	s_htable
 void					ft_putstr(const char *s);
 void					ft_puterr(const char *s);
 size_t					ft_strlen(const char *s);
+int						ft_strcmp(const char *s1, const char *s2);
+void					ft_bzero(void *s, size_t n);
+
+/*
+** buffer.c
+*/
+void					add_to_buffer(char *buf, const char *s);
 
 /*
 ** PARSING
@@ -62,11 +70,18 @@ t_bool					parsing(void);
 
 /*
 ** HASH
-** todo.c
+** new_table.c
 */
 t_htable				*new_table(size_t bucket_size);
-char					*get_hash(t_htable *table, const char *key);
-char					*set_hash(t_htable *table, \
-									const char *key, const char *value);
+
+/*
+** set_hash.c
+*/
+t_bool					set_hash(t_htable *table, char *key, char *value);
+
+/*
+** get_hash.c
+*/
+char					*get_hash(t_htable *table, char *key);
 
 #endif

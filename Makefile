@@ -6,15 +6,15 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/29 13:16:03 by mcanal            #+#    #+#              #
-#    Updated: 2016/04/22 23:59:23 by mcanal           ###   ########.fr        #
+#    Updated: 2016/04/23 02:06:01 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME =	hotrace
 
-C_SRC = main.c str.c
+C_SRC = main.c str.c buffer.c
 C_PARS =
-C_HASH =
+C_HASH = new_table.c set_hash.c get_hash.c jenkins_hash.c
 
 O_DIR = obj
 VPATH =	src:src/parsing:src/hash

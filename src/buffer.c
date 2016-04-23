@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hash.h                                             :+:      :+:    :+:   */
+/*   buffer.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/22 23:03:10 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/23 02:35:12 by mcanal           ###   ########.fr       */
+/*   Created: 2016/04/23 01:46:34 by mcanal            #+#    #+#             */
+/*   Updated: 2016/04/23 02:05:33 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HASH_H
-
-# define HASH_H
-
-# define RESIZE_TRIGGER	0.75
-# define RESIZE_FACTOR	8
-
-# include "hotrace.h"
-
 /*
-** jenkins_hash.c
+** concat string into buffer, print the string if buffer full
 */
-size_t					jenkins_hash(const char *value);
 
-#endif
+#include "hotrace.h"
+
+void	add_to_buffer(char *buf, const char *s)
+{
+	static size_t	len = 0;
+
+	buf += len;
+	while (*s)
+	{
+		*(buf++) = *(s++);
+		len++;
+		if (len == BUFF_SIZE)
+		{
+			write(1, buf - len, len);
+			len = 0;
+		}
+	}
+}
+
