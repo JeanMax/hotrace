@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 00:47:12 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/23 02:38:21 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/23 14:09:25 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,20 @@ static void	move_link(t_list **new_bucket, t_list *link, size_t bucket_size)
 static void	resize_table(t_htable *table)
 {
 	t_list	**new_bucket;
-	t_list	**swap;
+	t_list	**bucket;
 	size_t	size;
 
+	size = table->bucket_size;
 	table->bucket_size *= RESIZE_FACTOR;
 	new_bucket = (t_list **)malloc(sizeof(t_list *) * table->bucket_size);
-	size = table->bucket_size;
-	swap = table->bucket;
+	ft_bzero((void *)new_bucket, sizeof(t_list *) * table->bucket_size);
+	bucket = table->bucket;
 	while (size--)
-		if (*swap)
-			move_link(new_bucket, *swap++, table->bucket_size);
+	{
+		if (*bucket)
+			move_link(new_bucket, *bucket, table->bucket_size);
+		bucket++;
+	}
 	free(table->bucket);
 	table->bucket = new_bucket;
 }

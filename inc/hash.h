@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:03:10 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/23 02:35:12 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/23 14:16:02 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 # define HASH_H
 
-# define RESIZE_TRIGGER	0.75
-# define RESIZE_FACTOR	8
+# define INITIAL_BUCKET_SIZE	1024
+# define RESIZE_TRIGGER			0.75
+# define RESIZE_FACTOR			8
 
 # include "hotrace.h"
 

@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:01:57 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/23 02:22:21 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/23 14:45:56 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void					add_to_buffer(char *buf, const char *s);
 
 /*
 ** PARSING
-** todo.c
+** parsing.c
 */
 t_bool					parsing(void);
 
@@ -72,7 +72,12 @@ t_bool					parsing(void);
 ** HASH
 ** new_table.c
 */
-t_htable				*new_table(size_t bucket_size);
+t_htable				*new_table(void);
+
+/*
+** del_table.c
+*/
+void					del_table(t_htable *table);
 
 /*
 ** set_hash.c

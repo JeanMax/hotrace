@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   buffer.c                                           :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/23 01:46:34 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/23 15:04:41 by mcanal           ###   ########.fr       */
+/*   Created: 2016/04/23 14:43:26 by mcanal            #+#    #+#             */
+/*   Updated: 2016/04/23 14:56:47 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** concat string into buffer, print the string if buffer full
-*/
+#include "parsing.h"
 
-#include "hotrace.h"
-
-void		add_to_buffer(char *buf, const char *s)
+t_bool			parsing(void)
 {
-	static size_t	len = 0;
+	t_htable	*table;
+	char		print_buf[BUFF_SIZE];
+	char		read_buf[BUFF_SIZE];
+	ssize_t		ret;
 
-	buf += len;
-	while (*s)
+	table = new_table();
+	ft_bzero(print_buf, BUFF_SIZE);
+	ft_bzero(read_buf, BUFF_SIZE);
+
+	while ((ret = read(0, read_buf, BUFF_SIZE - 1)) > 0)
 	{
-		*(buf++) = *(s++);
-		len++;
-		if (len == BUFF_SIZE)
-		{
-			buf -= len;
-			write(1, buf, len);
-			ft_bzero(buf, len);
-			len = 0;
-		}
+		read_buf[ret] = 0;
+		//TODO
 	}
-}
 
+	ft_putstr(print_buf);
+	del_table(table);
+	return (ret >= 0);
+}
