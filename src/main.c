@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 00:12:49 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/24 16:34:24 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/24 18:17:09 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int				main(int ac, char **av)
 	if (ac > 1)
 	{
 		ft_puterr(*av);
-		ft_puterr(": too many arguments\n"); //TODO
+		ft_puterr(": too many arguments\n");
 		return (EXIT_FAILURE);
 	}
 	table = new_table();
@@ -32,7 +32,7 @@ int				main(int ac, char **av)
 	if (!parsing(table, print_buf))
 	{
 		ft_puterr(*av);
-		ft_puterr(": parsing failed\n"); //TODO
+		ft_puterr(": parsing failed\n");
 		ft_putstr(print_buf);
 		del_table(table);
 		return (EXIT_FAILURE);

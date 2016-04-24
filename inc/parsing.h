@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:01:42 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/24 15:08:26 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/24 18:15:24 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 ** read struct - dynamic buffer
 */
 typedef struct s_read	t_read;
-struct	s_read
+struct					s_read
 {
 	char	*buf;
 	size_t	alloc_size;
@@ -32,6 +32,6 @@ struct	s_read
 /*
 ** get_line.c
 */
-t_bool			get_line(char **line);
+t_bool					get_line(char **line);
 
 #endif

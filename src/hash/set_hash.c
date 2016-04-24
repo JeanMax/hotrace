@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 00:47:12 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/24 13:01:34 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/24 17:59:38 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ t_bool			set_hash(t_htable *table, char *key, char *value)
 {
 	size_t	hash;
 
+	if (!*key || !*value)
+		return (FALSE);
 	hash = jenkins_hash(key);
 	add_link(table->bucket + hash % table->bucket_size, hash, key, value);
 	table->length++;

@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 13:33:17 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/24 16:18:02 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/24 18:19:14 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static void		increase_buf(t_read *read_t)
 	read_t->alloc_size *= RESIZE_FACTOR;
 	new = (char *)malloc(sizeof(char) * read_t->alloc_size);
 	ft_memcpy(new, read_t->buf, read_t->length);
-	ft_bzero((void *)(new + read_t->length), read_t->alloc_size - read_t->length);
+	ft_bzero((void *)(new + read_t->length), \
+				read_t->alloc_size - read_t->length);
 	free(read_t->buf);
 	read_t->buf = new;
 }
@@ -75,11 +76,9 @@ t_bool			get_line(char **line)
 		if ((eol = ft_memchr(\
 				read_t->buf + read_t->length - ret, '\n', (size_t)ret)))
 			return (dup_line(read_t, line, (size_t)(eol - read_t->buf)));
-
 		if (read_t->length + BUFF_SIZE >= read_t->alloc_size)
 			increase_buf(read_t);
 	}
 	del_read_t(read_t);
-	/* free(*line); */
 	return (FALSE);
 }

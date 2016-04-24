@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:01:57 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/24 16:31:21 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/24 18:16:07 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
 # define TRUE			1
 # define FALSE			0
 
-typedef unsigned int	t_uint;
-typedef int				t_bool;
-
 # include "stdlib.h"
 # include "unistd.h"
+
+typedef unsigned int	t_uint;
+typedef int				t_bool;
 
 /*
 ** list struct - simple linked list
 */
 typedef struct s_list	t_list;
-struct	s_list
+struct					s_list
 {
 	char	*key;
 	char	*value;
@@ -41,7 +41,7 @@ struct	s_list
 ** htable struct - hash table
 */
 typedef struct s_htable	t_htable;
-struct	s_htable
+struct					s_htable
 {
 	size_t	length;
 	t_list	**bucket;
@@ -73,7 +73,7 @@ void					add_to_buffer(char *buf, const char *s);
 ** PARSING
 ** parsing.c
 */
-t_bool					parsing(t_htable *table, char * print_buf);
+t_bool					parsing(t_htable *table, char *print_buf);
 
 /*
 ** HASH

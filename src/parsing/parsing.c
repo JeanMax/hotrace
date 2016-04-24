@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 14:43:26 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/24 16:32:10 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/24 17:58:50 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ t_bool			parsing(t_htable *table, char *print_buf)
 
 	prev = NULL;
 	while (get_line(&line))
-		if (!*line)
+	{
+		if (!prev && !*line && prev != (char *)(unsigned long)-42)
 		{
 			prev = (char *)(unsigned long)-42;
 			free(line);
@@ -54,5 +55,6 @@ t_bool			parsing(t_htable *table, char *print_buf)
 			set_hash(table, prev, line);
 			prev = NULL;
 		}
+	}
 	return (TRUE);
 }
