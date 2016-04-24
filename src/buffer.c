@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 01:46:34 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/24 18:16:40 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/24 18:39:01 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		add_to_buffer(char *buf, const char *s)
 	{
 		*(buf++) = *(s++);
 		len++;
-		if (len == BUFF_SIZE)
+		if (len == PRINT_SIZE)
 		{
 			buf -= len;
 			write(1, buf, len);

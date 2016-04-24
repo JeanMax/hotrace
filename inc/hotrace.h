@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:01:57 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/24 18:16:07 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/24 18:43:21 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 # define HOTRACE_H
 
-# define BUFF_SIZE		1024
+# define PRINT_SIZE		2048
+# define READ_SIZE		64
 
 # define TRUE			1
 # define FALSE			0

@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 00:12:49 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/24 18:17:09 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/24 18:39:21 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 int				main(int ac, char **av)
 {
 	t_htable	*table;
-	char		print_buf[BUFF_SIZE];
+	char		print_buf[PRINT_SIZE];
 
 	if (ac > 1)
 	{
@@ -28,7 +28,7 @@ int				main(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 	table = new_table();
-	ft_bzero(print_buf, BUFF_SIZE);
+	ft_bzero(print_buf, PRINT_SIZE);
 	if (!parsing(table, print_buf))
 	{
 		ft_puterr(*av);

@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 13:33:17 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/24 18:19:14 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/24 18:39:51 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ static t_read	*new_read_t(void)
 	t_read	*read_t;
 
 	read_t = (t_read *)malloc(sizeof(t_read));
-	read_t->buf = (char *)malloc(sizeof(char) * BUFF_SIZE);
-	ft_bzero((void *)read_t->buf, BUFF_SIZE);
-	read_t->alloc_size = BUFF_SIZE;
+	read_t->buf = (char *)malloc(sizeof(char) * READ_SIZE);
+	ft_bzero((void *)read_t->buf, READ_SIZE);
+	read_t->alloc_size = READ_SIZE;
 	read_t->length = 0;
 	return (read_t);
 }
@@ -68,15 +68,15 @@ t_bool			get_line(char **line)
 		read_t = new_read_t();
 	else if ((eol = ft_memchr(read_t->buf, '\n', read_t->length)))
 		return (dup_line(read_t, line, (size_t)(eol - read_t->buf)));
-	if (read_t->length + BUFF_SIZE >= read_t->alloc_size)
+	if (read_t->length + READ_SIZE >= read_t->alloc_size)
 		increase_buf(read_t);
-	while ((ret = read(0, read_t->buf + read_t->length, BUFF_SIZE)) > 0)
+	while ((ret = read(0, read_t->buf + read_t->length, READ_SIZE)) > 0)
 	{
 		read_t->length += (size_t)ret;
 		if ((eol = ft_memchr(\
 				read_t->buf + read_t->length - ret, '\n', (size_t)ret)))
 			return (dup_line(read_t, line, (size_t)(eol - read_t->buf)));
-		if (read_t->length + BUFF_SIZE >= read_t->alloc_size)
+		if (read_t->length + READ_SIZE >= read_t->alloc_size)
 			increase_buf(read_t);
 	}
 	del_read_t(read_t);
