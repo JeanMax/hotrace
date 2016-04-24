@@ -6,14 +6,14 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/29 13:16:03 by mcanal            #+#    #+#              #
-#    Updated: 2016/04/23 14:44:33 by mcanal           ###   ########.fr        #
+#    Updated: 2016/04/24 15:15:03 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME =	hotrace
 
-C_SRC = main.c str.c buffer.c
-C_PARS = parsing.c
+C_SRC = main.c str.c mem.c buffer.c
+C_PARS = parsing.c get_line.c
 C_HASH = new_table.c del_table.c set_hash.c get_hash.c jenkins_hash.c
 
 O_DIR = obj

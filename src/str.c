@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 22:41:17 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/23 01:15:00 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/24 14:36:23 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,4 @@ int		ft_strcmp(const char *s1, const char *s2)
 	while (*s1 && *s2 && *s1 == *s2 && s1++ && s2++)
 		;
 	return ((unsigned char)*s1 - (unsigned char)*s2);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	char *swap;
-
-	if (n)
-	{
-		swap = s;
-		while (n--)
-			*swap++ = 0;
-	}
 }

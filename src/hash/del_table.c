@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 12:34:39 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/23 16:53:56 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/24 16:22:57 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void		del_list(t_list *link)
 	while (link)
 	{
 		next = link->next;
-		//TODO: free key/value?
 		free(link->key);
 		free(link->value);
 		free(link);

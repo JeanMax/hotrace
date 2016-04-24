@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 00:47:12 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/23 14:09:25 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/24 13:01:34 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "hash.h"
 
-static void	move_link(t_list **new_bucket, t_list *link, size_t bucket_size)
+static void		move_link(t_list **new_bucket, t_list *link, size_t bucket_size)
 {
 	t_list	**dst;
 	t_list	*next;
@@ -31,7 +31,7 @@ static void	move_link(t_list **new_bucket, t_list *link, size_t bucket_size)
 	}
 }
 
-static void	resize_table(t_htable *table)
+static void		resize_table(t_htable *table)
 {
 	t_list	**new_bucket;
 	t_list	**bucket;
@@ -52,19 +52,35 @@ static void	resize_table(t_htable *table)
 	table->bucket = new_bucket;
 }
 
-t_bool		set_hash(t_htable *table, char *key, char *value)
+static void		add_link(t_list **link, size_t hash, char *key, char *value)
 {
-	t_list	*new;
-	t_list	**link;
+	t_list	*swap;
 
-	if (!(new = (t_list *)malloc(sizeof(t_list))))
-		return (FALSE);
-	new->key = key; //TODO: check if key already exists?
-	new->value = value; //TODO: malloc key/value?
-	new->hash = jenkins_hash(key);
-	link = table->bucket + new->hash % table->bucket_size;
-	new->next = *link;
-	*link = new;
+	swap = *link;
+	while (swap)
+	{
+		if (hash == swap->hash && !ft_strcmp(key, swap->key))
+		{
+			free(swap->value);
+			swap->value = value;
+			return ;
+		}
+		swap = swap->next;
+	}
+	swap = (t_list *)malloc(sizeof(t_list));
+	swap->key = key;
+	swap->value = value;
+	swap->hash = hash;
+	swap->next = *link;
+	*link = swap;
+}
+
+t_bool			set_hash(t_htable *table, char *key, char *value)
+{
+	size_t	hash;
+
+	hash = jenkins_hash(key);
+	add_link(table->bucket + hash % table->bucket_size, hash, key, value);
 	table->length++;
 	if (table->length / table->bucket_size > RESIZE_TRIGGER)
 		resize_table(table);

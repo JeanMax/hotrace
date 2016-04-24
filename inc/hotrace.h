@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:01:57 by mcanal            #+#    #+#             */
-/*   Updated: 2016/04/23 16:13:21 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/04/24 16:31:21 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,14 @@ void					ft_putstr(const char *s);
 void					ft_puterr(const char *s);
 size_t					ft_strlen(const char *s);
 int						ft_strcmp(const char *s1, const char *s2);
+
+/*
+** mem.c
+*/
 void					ft_bzero(void *s, size_t n);
+void					*ft_memchr(const void *s, int c, size_t n);
+void					*ft_memcpy(void *dest, const void *src, size_t n);
+void					*ft_memmove(void *dest, const void *src, size_t n);
 
 /*
 ** buffer.c
@@ -66,7 +73,7 @@ void					add_to_buffer(char *buf, const char *s);
 ** PARSING
 ** parsing.c
 */
-t_bool					parsing(void);
+t_bool					parsing(t_htable *table, char * print_buf);
 
 /*
 ** HASH
